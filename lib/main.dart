@@ -1,81 +1,54 @@
-import 'package:flutter/material.dart';
 
-void main(){
-  runApp(App());
+
+import 'package:app_1/packages/qoute/quote.dart';
+import 'package:app_1/page/landing_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Quotes().getAll();
+  runApp(MyApp());
 }
 
-class App extends StatelessWidget {
-  const App({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     return MaterialApp(
-      home: FirstApp(),
-      debugShowCheckedModeBanner: false,
+      home: TrangChu(),
       theme: ThemeData(
-        primarySwatch: Colors.red,
-      )
+        primarySwatch: Colors.blue,
+      ),
+      title: 'Flutter',
+      debugShowCheckedModeBanner: false,
     );
   }
 }
-
-class FirstApp extends StatelessWidget {
-  const FirstApp({super.key});
+class TrangChu extends StatelessWidget {
+  const TrangChu({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('On Tap'),
-          leading: IconButton(
+          centerTitle: true,
+          title: const Text('Test'),
+          leading:IconButton(
             icon: const Icon(Icons.apps),
-            tooltip: 'Menu',
-            onPressed:() {
-              Navigator.push(context, MaterialPageRoute<void>(
-                builder: (BuildContext context){
-                  return SafeArea(
-                    child: Scaffold(
-                      appBar: AppBar(
-                        title: const Text('back'),
-                      ),
-                      body:Center(
-                        child: Text.rich(
-                          TextSpan(
-                            text: 'Hello',
-                            children: [
-                              TextSpan(
-                                text: 'World',
-                                style: TextStyle(
-                                  color: Colors.blue
-                                )
-                              ),
-                              TextSpan(
-                                text: 'Khanh',
-                                style: TextStyle(
-                                  color: Colors.green,
-                                )
-                              ),
-                              TextSpan(
-                                text: 'Bip'
-                              )
-                            ],
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontStyle: FontStyle.italic,
-                              color: Colors.red,
-                            )
-                          )
-                        ),
-                      )
-                    ),
-                  );
-                }
-              ));
-            }
+            onPressed: () {
+              
+            },
           ),
         ),
-      )
+        body: Center(
+          child: LandingPage(),
+        ),
+      ),
     );
   }
 }

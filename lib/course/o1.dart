@@ -75,6 +75,37 @@ class FirstApp extends StatelessWidget {
             }
           ),
         ),
+        body: Container(
+          child: Row( // có thể dùng wrap để có thể đẩy layout xuống dưới khi bị tràn màn hình
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: Container(
+                  width: 100,
+                  height: 100, 
+                  color: Colors.red,
+                
+                  child: Center(
+                    child: Text('Xin Chao')
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  child: Text('Texxt'),
+                  color: Colors.blue,
+                ),
+              ),
+              Container(
+                width: 100,
+                height: 100, 
+                color: Colors.green,
+              ),
+            ],
+          ),
+        ),
       )
     );
   }

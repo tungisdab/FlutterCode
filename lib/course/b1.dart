@@ -59,6 +59,7 @@ class MyWidget1State extends State<MyWidget1>{
 
   @override
   void initState() {
+    super.initState();
     _localLoading = widget.loading;
   }
 
